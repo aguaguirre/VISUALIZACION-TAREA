@@ -15,7 +15,8 @@ class interval
          */
         interval(double min, double max)
         {
-            //TODO
+             this->min = min;
+             this->max = max;
         }
 
         /**
@@ -23,7 +24,7 @@ class interval
          */
         double size() const
         {
-            //TODO
+            return max - min;
         }
 
         /**
