@@ -19,14 +19,14 @@ class vec3
          */
         double x() const 
         { 
-            //TODO 
+            return e[0];
         }
         /**
          * @brief getter de la coordenada y
          */
         double y() const 
         { 
-            //TODO 
+            return e[1]; 
         }
 
         /**
@@ -34,7 +34,7 @@ class vec3
          */
         double z() const 
         {
-            //TODO
+            return e[2];
         }
 
         vec3 operator-() const { return vec3(-e[0],-e[1],-e[2]); }
