@@ -57,16 +57,34 @@ Point getMidpoint(Point p1, Point p2) {
 void generateSierpinski(int n, Point a, Point b, Point c, std::vector<float>& vertices) {
     // Caso base:
     if (n == 1) {
-        // TODO
         // Se generan los tres colores aleatorios (entre 0 y 1)
+        float r = static_cast<float>(std::rand()) / RAND_MAX;
+        float g = static_cast<float>(std::rand()) / RAND_MAX;
+        float bl = static_cast<float>(std::rand()) / RAND_MAX;
 
         // Se guarda el primer vértice
-
+        vertices.push_back(a.x);
+        vertices.push_back(a.y);
+        vertices.push_back(0.0f);
+        vertices.push_back(r);
+        vertices.push_back(g);
+        vertices.push_back(bl);
 
         // Se guarda el segundo vértice
+        vertices.push_back(b.x);
+        vertices.push_back(b.y);
+        vertices.push_back(0.0f);
+        vertices.push_back(r);
+        vertices.push_back(g);
+        vertices.push_back(bl);
 
         // Se guarda el tercer vértice
-
+        vertices.push_back(c.x);
+        vertices.push_back(c.y);
+        vertices.push_back(0.0f);
+        vertices.push_back(r);
+        vertices.push_back(g);
+        vertices.push_back(bl);
 
         return;
     }
