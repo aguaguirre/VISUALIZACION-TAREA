@@ -15,7 +15,8 @@ const char* vertexShaderSource = R"(
 
     void main()
     {
-        //TODO
+        gl_Position = vec4(aPos, 1.0);
+        vertexColor = aColor;
     }
 )";
 
@@ -27,7 +28,7 @@ const char* fragmentShaderSource = R"(
 
     void main()
     {
-        //TODO
+        FragColor = vec4(vertexColor, 1.0);
     }
 )";
 
@@ -213,12 +214,12 @@ int main()
 
     glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), &vertices[0], GL_STATIC_DRAW);
 
-    //TODO
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, //TODO , //TODO);
+    // Atributo 0: posición (3 floats, al inicio de cada vértice)
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
 
-    //TODO
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, //TODO, //TODO);
+    // Atributo 1: color (3 floats, después de la posición)
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
     glEnableVertexAttribArray(1);
 
     glBindVertexArray(0);
@@ -238,8 +239,9 @@ int main()
         // Draw the triangle
         glUseProgram(shaderProgram);
         glBindVertexArray(VAO);
-        //TODO
-        glDrawArrays(GL_TRIANGLES, 0, //TODO);
+        
+        // Número de vértices a dibujar.
+        glDrawArrays(GL_TRIANGLES, 0, static_cast<GLsizei>(vertices.size() / 6));
 
         // Swap buffers and poll IO events
         glfwSwapBuffers(window);
